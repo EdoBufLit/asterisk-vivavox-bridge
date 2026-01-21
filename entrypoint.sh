@@ -18,4 +18,15 @@ mkdir -p /var/log/asterisk
 touch /var/log/asterisk/full
 
 echo "[entrypoint] Starting Asterisk..."
-exec asterisk -fvvvv
+asterisk -fvvvv &
+
+# aspetta che Asterisk si alzi
+sleep 5
+
+# stampa stato registrazioni e contatti in log (utilissimo su Render)
+asterisk -rx "pjsip show registrations" || true
+asterisk -rx "pjsip show contacts" || true
+
+# tieni il processo in foreground
+wait -n
+
