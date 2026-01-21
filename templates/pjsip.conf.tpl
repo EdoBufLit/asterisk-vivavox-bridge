@@ -17,6 +17,8 @@ contact=sip:sip.vivavox.it
 
 ; ===== Endpoint VivaVox (chiamate in ingresso dal provider) =====
 [vivavox-endpoint]
+ice_support=no
+rtcp_mux=no
 type=endpoint
 transport=transport-udp
 context=from-vivavox
